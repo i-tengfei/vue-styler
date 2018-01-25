@@ -28,7 +28,9 @@ const styler = (
   for (let i = 0; i < numKeys; i++) {
     let key = keys[i]
     let value = values[key]
-    const valueType = types[key] || getValueType((key = aliasMap[key] || key))
+    let valueType = types[key]
+    key = aliasMap[key] || key
+    valueType = valueType || getValueType(key)
     if (
       valueType &&
       (typeof value === 'number' || typeof value === 'object') &&
